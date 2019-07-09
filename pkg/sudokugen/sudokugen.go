@@ -108,7 +108,7 @@ func inSquare(num int, x int, y int) bool {
 	return false
 }
 
-func fillNumber(x int, y int) {
+func FillNumber(x int, y int) {
 
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
@@ -154,7 +154,7 @@ func printSquare(top Coord, bottom Coord) {
 	fmt.Println("")
 }
 
-func printBoard() {
+func PrintBoard() {
 
 	for x := 0; x < 12; x++ {
 		fmt.Println(grid[x])
