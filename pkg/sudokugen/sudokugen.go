@@ -1,7 +1,6 @@
 package sudokugen
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
@@ -90,21 +89,17 @@ func (b *Board) inBox(c Coord, num int) bool {
 
 	inbox := false
 
-	//fmt.Printf("In box: %v\n", inbox)
+	//boxIndex := b.getBoxIndex(c)
+	//fmt.Printf("In box: %v, Index: %v\n", inbox, boxIndex)
 	return inbox
 }
 
 //Gets the index of a box by the current cell index
 //Box idex starts at 1, moving horizontally for each verical line
 //I.e, in a 9x9 sudoku, the top row would be Boxes 1, 2 and 3 from left to right
-func (b *Board) getBoxIndex(currentCell int) int {
+func (b *Board) getBoxIndex(currentCell Coord) int {
 
-	for i := 1; i <= (b.fullDimension); i++ {
-		if currentCell <= ((b.xDimension * b.yDimension) * i) {
-			return i
-		}
-	}
-	return 0
+	return 1
 }
 
 func (b *Board) getValue(c Coord) int {
@@ -190,7 +185,6 @@ func GenerateBoard(x int, y int) Board {
 	rand.Seed(time.Now().UnixNano())
 	board := NewBoard(x, y)
 	board.fillBoard()
-	fmt.Println(board.grid)
 
 	return board
 }
