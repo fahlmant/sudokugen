@@ -1,8 +1,11 @@
 package main
 
-import "github.com/fahlmant/sudokugen/pkg/sudokugen"
+import (
+	"github.com/fahlmant/sudokugen/pkg/sudokugen"
+)
 
 func main() {
 
-	sudokugen.GenerateBoard(12)
+	board := sudokugen.GenerateBoard(4, 3)
+	sudokugen.PrintColumnOfBoxes(board, 1)
 }
