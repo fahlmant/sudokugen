@@ -7,5 +7,5 @@ import (
 func main() {
 
 	board := sudokugen.GenerateBoard(4, 3)
-	sudokugen.PrintColumnOfBoxes(board, 1)
+	sudokugen.PrintBoard(board)
 }

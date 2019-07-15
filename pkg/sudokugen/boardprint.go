@@ -31,10 +31,14 @@ func PrintColumnOfBoxes(board Board, index int) {
 	}
 }
 
-func printBox(box Box) {
+func printBox(board Board, index int) {
 
 }
 
-func printBoard(board Board) {
+func PrintBoard(board Board) {
 
+	for row := 1; row <= board.yDimension; row++ {
+		PrintRowOfBoxes(board, row)
+		fmt.Println("")
+	}
 }
