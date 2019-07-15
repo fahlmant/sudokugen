@@ -142,7 +142,7 @@ func (b *Board) fillCell(c Coord, num int) {
 
 func (b *Board) getRandBoardValue() int {
 
-	time.Sleep(500)
+	//time.Sleep(500)
 	num := (rand.Intn((b.fullDimension + 1) - 1)) + 1
 	return num
 }
