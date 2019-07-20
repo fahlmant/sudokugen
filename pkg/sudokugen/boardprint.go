@@ -2,47 +2,43 @@ package sudokugen
 
 import "fmt"
 
-func printRowOfSquares(topLeft Coord, bottomRight Coord) {
+func PrintRowOfBoxes(board Board, index int) {
 
-	for y := topLeft.y; y <= bottomRight.y; y++ {
-		for x := topLeft.x; x <= bottomRight.x; x++ {
-			fmt.Print(grid[y][x])
-			fmt.Print(" ")
-			if (x+1)%4 == 0 {
-				fmt.Print(" ")
-				fmt.Print(" ")
-				fmt.Print(" ")
+	boxIndex := index - 1
+	for y := board.yDimension * boxIndex; y < board.yDimension*index; y++ {
+		for x := 0; x < board.fullDimension; x++ {
+			fmt.Printf("%v ", board.grid[y][x])
+			if ((x + 1) % board.xDimension) == 0 {
+				fmt.Printf("    ")
 			}
 		}
 		fmt.Println("")
 	}
-	fmt.Println("")
-}
-
-func printColumnOfSquares(topLeft Coord, bottomRight Coord) {
 
 }
 
-func printSquare(top Coord, bottom Coord) {
+func PrintColumnOfBoxes(board Board, index int) {
 
-	for y := top.y; y <= bottom.y; y++ {
-		for x := top.x; x <= bottom.x; x++ {
-			fmt.Print(grid[y][x])
-			fmt.Print(" ")
+	boxIndex := index - 1
+	for y := 0; y < board.fullDimension; y++ {
+		for x := board.xDimension * boxIndex; x < board.xDimension*index; x++ {
+			fmt.Printf("%v ", board.grid[y][x])
 		}
 		fmt.Println("")
+		if ((y + 1) % board.yDimension) == 0 {
+			fmt.Println("")
+		}
 	}
-	fmt.Println("")
 }
 
-func PrintBoard() {
+func printBox(board Board, index int) {
 
-	for x := 0; x < 12; x++ {
-		fmt.Println(grid[x])
+}
+
+func PrintBoard(board Board) {
+
+	for row := 1; row <= board.yDimension; row++ {
+		PrintRowOfBoxes(board, row)
+		fmt.Println("")
 	}
-	fmt.Println("")
-	printRowOfSquares(square1Top, square3Bottom)
-	printRowOfSquares(square4Top, square6Bottom)
-	printRowOfSquares(square7Top, square9Bottom)
-	printRowOfSquares(square10Top, square12Bottom)
 }
