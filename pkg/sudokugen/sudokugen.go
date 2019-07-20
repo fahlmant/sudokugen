@@ -1,6 +1,7 @@
 package sudokugen
 
 import (
+	"math"
 	"math/rand"
 	"time"
 )
@@ -89,17 +90,28 @@ func (b *Board) inBox(c Coord, num int) bool {
 
 	inbox := false
 
-	//boxIndex := b.getBoxIndex(c)
-	//fmt.Printf("In box: %v, Index: %v\n", inbox, boxIndex)
+	xBoxIndex, yBoxIndex := b.getBoxIndex(c)
+	for x := (xBoxIndex * b.xDimension); x < (xBoxIndex*b.xDimension)+b.xDimension; x++ {
+		for y := (yBoxIndex * b.yDimension); y < (yBoxIndex*b.yDimension)+b.yDimension; y++ {
+			if num == b.getValue(Coord{x, y}) {
+				inbox = true
+			}
+		}
+	}
 	return inbox
 }
 
 //Gets the index of a box by the current cell index
-//Box idex starts at 1, moving horizontally for each verical line
-//I.e, in a 9x9 sudoku, the top row would be Boxes 1, 2 and 3 from left to right
-func (b *Board) getBoxIndex(currentCell Coord) int {
+//Box idex starts at 0, moving horizontally for each verical line
+//I.e, in a 9x9 sudoku, the top row would be Boxes 0, 1 and 2 from left to right
+func (b *Board) getBoxIndex(currentCell Coord) (xBoardIndex int, yBoardIndex int) {
 
-	return 1
+	//Calculate x index of Box
+	xBoxIndex := math.Floor(float64(currentCell.x / b.xDimension))
+	//Calculate y index of Box
+	yBoxIndex := math.Floor(float64(currentCell.y / b.yDimension))
+
+	return int(xBoxIndex), int(yBoxIndex)
 }
 
 func (b *Board) getValue(c Coord) int {
