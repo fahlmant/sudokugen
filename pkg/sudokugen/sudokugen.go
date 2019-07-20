@@ -11,17 +11,6 @@ type Coord struct {
 	x, y int
 }
 
-//Cell represents a single value in the puzzle
-type Cell struct {
-	value int
-}
-
-//Box is
-type Box struct {
-	//Some 2D array of cells
-	cells interface{}
-}
-
 //Board represents the full puzzle board
 type Board struct {
 	//Horizontal dimension of one Box
