@@ -42,3 +42,7 @@ func PrintBoard(board Board) {
 		fmt.Println("")
 	}
 }
+
+func PrintUsage() {
+	fmt.Println("Usage: sudokugen takes two integers, i.e. sudokugen 3 3")
+}
